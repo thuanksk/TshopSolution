@@ -14,7 +14,7 @@ namespace TshopSolution.Data.Entites
         public string ShipEmail { set; get; }
         public string ShipPhoneNumber { set; get; }
         public OrderStatus Status { set; get; }
-
+        //1 order - many orderdetail
         public List<OrderDetail> OrderDetails { get; set; }
     }
 }

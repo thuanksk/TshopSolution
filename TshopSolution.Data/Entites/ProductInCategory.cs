@@ -13,5 +13,6 @@ namespace TshopSolution.Data.Entites
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+        
     }
 }

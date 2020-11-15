@@ -5,7 +5,7 @@ using System.Transactions;
 
 namespace TshopSolution.Data.Entites
 {
-   public class Transaction
+   public class TranSaction
     {
         public int Id { set; get; }
         public DateTime TransactionDate { set; get; }
