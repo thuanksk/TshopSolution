@@ -16,4 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Tshop.WebApp\Tshop.WebApp.csproj" />
+    <ProjectReference Include="..\TshopsSolution.Application\TshopsSolution.Application.csproj" />
+  </ItemGroup>
+
 </Project>
