@@ -5,7 +5,7 @@ using System.Text;
 using TshopSolution.Data.Configrations;
 using TshopSolution.Data.Configurations;
 using TshopSolution.Data.Entites;
-
+using TshopSolution.Data.Extension;
 
 namespace TshopSolution.Data.EF
 {
@@ -17,7 +17,7 @@ namespace TshopSolution.Data.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-          
+            // runing vao day dau tien  
             modelBuilder.ApplyConfiguration(new AppConfigConfiguration());
             modelBuilder.ApplyConfiguration(new CartConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryConfiguration());
@@ -32,7 +32,7 @@ namespace TshopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
             //base.OnModelCreating(modelBuilder);
-
+            modelBuilder.Seed();
         }
 
         public DbSet<Contact> Contacts { get; set; }
