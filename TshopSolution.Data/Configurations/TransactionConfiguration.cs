@@ -18,6 +18,8 @@ namespace TshopSolution.Data.Configurations
             builder.HasKey(x=> x.Id);
 
             builder.Property(x => x.Id).UseIdentityColumn();
+
+            builder.HasOne(x => x.AppUser).WithMany(x => x.TranSactions).HasForeignKey(x => x.UserId);
         }
     }
 }

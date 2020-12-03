@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using TshopSolution.Data.Configrations;
 using TshopSolution.Data.Configurations;
@@ -9,7 +12,7 @@ using TshopSolution.Data.Extension;
 
 namespace TshopSolution.Data.EF
 {
-    public class TshopDBcontext : DbContext
+    public class TshopDBcontext : IdentityDbContext<AppUser,AppRole,Guid>
     {
         public TshopDBcontext(DbContextOptions options) : base(options)
         {
@@ -31,7 +34,19 @@ namespace TshopSolution.Data.EF
             modelBuilder.ApplyConfiguration(new ProductTranslationConfiguration());
             modelBuilder.ApplyConfiguration(new PromotionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
+            
+            modelBuilder.ApplyConfiguration(new AppUserConfigConfiguration());
+            modelBuilder.ApplyConfiguration(new AppRoleConfigConfiguration());
+
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppUserClaims");
+            modelBuilder.Entity<IdentityUserRole<Guid>>().ToTable("AppUserRole").HasKey(x=> new {x.UserId, x.RoleId });
+            modelBuilder.Entity<IdentityUserLogin<Guid>>().ToTable("AppUserLogin").HasKey(x => x.UserId);
+
+            modelBuilder.Entity<IdentityRoleClaim<Guid>>().ToTable("AppRoleClaims");
+            modelBuilder.Entity<IdentityUserToken<Guid>>().ToTable("AppUserToken").HasKey(x => x.UserId);
+            
             //base.OnModelCreating(modelBuilder);
+
             modelBuilder.Seed();
         }
 

@@ -16,5 +16,6 @@ namespace TshopSolution.Data.Entites
         public OrderStatus Status { set; get; }
         //1 order - many orderdetail
         public List<OrderDetail> OrderDetails { get; set; }
+       public AppUser AppUser { get; set; }
     }
 }
