@@ -86,39 +86,40 @@ namespace TshopSolution.Data.Extension
                 new ProductInCategory() { ProductId = 1, CategoryId = 1 }
                 );
 
-            //// any guid
-            //var roleId = new Guid("8D04DCE2-969A-435D-BBA4-DF3F325983DC");
-            //var adminId = new Guid("69BD714F-9576-45BA-B5B7-F00649BE00DE");
-            //modelBuilder.Entity<AppRole>().HasData(new AppRole
-            //{
-            //    Id = roleId,
-            //    Name = "admin",
-            //    NormalizedName = "admin",
-            //    Description = "Administrator role"
-            //});
+            // any guid for database
+            var roleId = new Guid("1AE3C148-F37D-4CCE-A563-2D9814A5B8E1"); //create bang tool  <Guid("1AE3C148-F37D-4CCE-A563-2D9814A5B8E1")>
+            var adminId = new Guid("6F13F2D8-EC4B-4E8E-B43B-40D7DE5E0DF0");//create bang tool <Guid("6F13F2D8-EC4B-4E8E-B43B-40D7DE5E0DF0")>
 
-            //var hasher = new PasswordHasher<AppUser>();
-            //modelBuilder.Entity<AppUser>().HasData(new AppUser
-            //{
-            //    Id = adminId,
-            //    UserName = "admin",
-            //    NormalizedUserName = "admin",
-            //    Email = "tedu.international@gmail.com",
-            //    NormalizedEmail = "tedu.international@gmail.com",
-            //    EmailConfirmed = true,
-            //    PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
-            //    SecurityStamp = string.Empty,
-            //    FirstName = "Toan",
-            //    LastName = "Bach",
-            //    Dob = new DateTime(2020, 01, 31)
-            //});
+            modelBuilder.Entity<AppRole>().HasData(new AppRole
+            {
+                Id = roleId,
+                Name = "admin",
+                NormalizedName = "admin",
+                Description = "Administrator role"
+            });
 
-            //modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
-            //{
-            //    RoleId = roleId,
-            //    UserId = adminId
-            //});
-            // }
+            var hasher = new PasswordHasher<AppUser>();
+            modelBuilder.Entity<AppUser>().HasData(new AppUser
+            {
+                Id = adminId,
+                UserName = "admin",
+                NormalizedUserName = "admin",
+                Email = "thuanit2306@gmail.com",
+                NormalizedEmail = "thuanit2306@gmail.com",
+                EmailConfirmed = true,
+                PasswordHash = hasher.HashPassword(null, "Abcd1234$"),
+                SecurityStamp = string.Empty,
+                FirstName = "Thuan",
+                LastName = "Nguyen",
+                DOB = new DateTime(2020, 01, 31)
+            });
+
+            modelBuilder.Entity<IdentityUserRole<Guid>>().HasData(new IdentityUserRole<Guid>
+            {
+                RoleId = roleId,
+                UserId = adminId
+            });
         }
     }
-}
+    }
+
